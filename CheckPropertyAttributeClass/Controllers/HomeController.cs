@@ -62,56 +62,57 @@ namespace CheckPropertyAttributeClass.Controllers
         /**************************************************************************************************************/
         public async Task<ActionResult> ReflectOnClass(string filePath)
         {
-            //if (!string.IsNullOrEmpty(filePath))
-            //{
-            //var path=filePath.Replace("\\\\", "\\");
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                var path = filePath.Replace("\\\\", "\\");
 
-            //  Assembly assembly = Assembly.LoadFrom(@"D:\Repos\UnitTestingDemo\CheckPropertyAttributeClass\CheckPropertyAttributeClass\wwwroot\uploads\Student.dll");
-            //  Assembly assembly = Assembly.LoadFrom(path);
+                // Assembly myAssembly = Assembly.LoadFrom(@"D:\Repos\UnitTestingDemo\CheckPropertyAttributeClass\CheckPropertyAttributeClass\wwwroot\uploads\Student.dll");
+                Assembly assembly = Assembly.LoadFrom(path);
 
-            //   Type type = assembly.GetType("Student");
+                //  Type type = assembly.GetType("Student");
 
-            //Type[] assemblyTypes = assembly.GetTypes();
+                //   Type[] assemblyTypes = assembly.GetTypes();
 
-            /**/
-            Assembly myAssembly = Assembly.LoadFrom(@"D:\Repos\UnitTestingDemo\CheckPropertyAttributeClass\CheckPropertyAttributeClass\wwwroot\uploads\Student.dll");
+                /**/
 
-            //Gets all referenced Types of the current Assembly that implement a specific interface
-            //IEnumerable<Type> currentAssemblytypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsInterface);
+                //Gets all referenced Types of the current Assembly that implement a specific interface
+                //IEnumerable<Type> currentAssemblytypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsInterface);
 
-            ////Gets all referenced Types of an assembly that implement a specific interface
-            //IEnumerable<Type> otherAssemblyTypes = myAssembly.GetTypes().Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsInterface);
+                ////Gets all referenced Types of an assembly that implement a specific interface
+                //IEnumerable<Type> otherAssemblyTypes = myAssembly.GetTypes().Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsInterface);
 
-            ////You can also change IsInterface to IsAbstract if you are checking for types that implement an Abstract Class.
-            //IEnumerable<Type> otherAssemblyTypesAbstract = myAssembly.GetTypes().Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsAbstract);
+                ////You can also change IsInterface to IsAbstract if you are checking for types that implement an Abstract Class.
+                //IEnumerable<Type> otherAssemblyTypesAbstract = myAssembly.GetTypes().Where(y => typeof(IRequestBody).IsAssignableFrom(y) && !y.IsAbstract);
 
-            //omid
+                //omid
 
-            var type = myAssembly.GetTypes().SingleOrDefault(t => !t.IsInterface && t.GetInterfaces().Any(a => a.Name == typeof(IRequestBody).Name));
-            /**/
+                var type = assembly.GetTypes().SingleOrDefault(t => !t.IsInterface && t.GetInterfaces().Any(a => a.Name == typeof(IRequestBody).Name));
+                /**/
 
 
-            //      foreach (Type mytype in assembly.GetTypes()){
+                //      foreach (Type mytype in assembly.GetTypes()){
 
-            //            GetDomainName(mytype);
-            //if (mytype.FullName.Contains("IRequestBody")){
+                //            GetDomainName(mytype);
+                //if (mytype.FullName.Contains("IRequestBody")){
 
-            //    GetDomainName(mytype);
-            //    break;
-            //}
-            //  }
-
+                //    GetDomainName(mytype);
+                //    break;
+                //}
+                //  }
 
 
 
 
 
 
-            //   }
 
-            // GetDomainName(typeof(Student));
-            GetDomainName(type);
+                //   }
+
+                // GetDomainName(typeof(Student));
+                GetDomainName(type);
+            }
             return View("ReflectOnClass", getDomainNameViewModels);
+
         }
 
         public void GetDomainName(Type T)

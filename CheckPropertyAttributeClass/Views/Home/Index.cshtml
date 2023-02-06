@@ -1,0 +1,25 @@
+﻿@using CheckPropertyAttributeClass.Models.ViewModels;
+@model FileUpload
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h3>Upload your class to Get test senario</h3>
+
+
+
+<div class="text-center">
+    <form enctype="multipart/form-data" method="POST" asp-action="UploadAssembly" asp-controller="Home">
+        <dl>
+            <dt>
+                <label asp-for="@Model.FormFile">
+                    Upload Your File
+                </label>
+            </dt>
+            <dd>
+                <input asp-for="@Model.FormFile" type="file" />
+            </dd>
+        </dl>
+        <button type="submit" class="btn btn-primary">Submit File</button>
+
+    </form>
+</div>

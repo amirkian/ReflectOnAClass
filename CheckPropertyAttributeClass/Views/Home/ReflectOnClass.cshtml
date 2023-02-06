@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CheckPropertyAttributeClass.Models.ViewModels.GetDomainNameViewModel>
+    @{
+        ViewBag.Title = "Get domain name view";
+    }
+    @section Styles
+        {
+          <style>
+
+          </style>
+    }
+
+    <section style="direction:rtl;text-align:right">
+        <h2 class="text-info">اعتبار سنجی</h2>
+
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>
+                    @item.ErrorMessage;
+                    <hr />
+                </li>
+            }
+        </ul>
+
+    </section>
+
+
